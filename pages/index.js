@@ -1,17 +1,37 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useState } from 'react';
 
-export default function Home() {
+export default function Home(props) {
+  // function onreg(){
+    
+  //   if(token === null){
+  //     window.location.replace("/login");
+  //   }
+  //   else{
+  //     window.location.replace("/register");
+  //   }
+  // }
   return (
     <>
-    
       <div className='board'>
-        <div className='top'>
-        <button className='reg'>질문 등록하기</button>
-        <div className='search-bar'>
-          <input type={'text'} className="search" />
-          <input type={'submit'} className="submit" value="검색" />
-        </div>
+        <div className='top'> 
+        <Link href={props.token !== null ? "/register" : "/login"}>
+          <button className='reg'>질문 등록하기</button>
+        </Link>
+          <div className='search-bar'>
+            <input type={'text'} className="search" />
+            <input type={'submit'} className="submit" value="검색" />
+          </div>
+      </div>
+      <div className='bar'>
+        <ul>
+          <li className='num'>번호</li>
+          <li className='title'>제목</li>
+          <li className='author'>글쓴이</li>
+          <li className='creat'>작성일시</li>
+        </ul>
       </div>
     </div>
     <style jsx>{`
@@ -51,6 +71,33 @@ export default function Home() {
         background-color: #f8f9fa;
         border: 1px solid black;
         border-radius: 5px;
+      }
+      .bar{
+        margin-top: 30px;
+        background-color: #212529;
+        height: 40px;
+        display: flex;
+        align-items: center;
+      }
+      li{
+        color: white;
+        list-style-type: none;
+        font-width: bold;
+        font-size: 17px;
+      }
+      ul{
+        padding-left: 20px;
+        display: flex;
+        justify-content: flex-start;
+      }
+      .title{
+        margin-left: 70px;
+      }
+      .author{
+        margin-left: 700px;
+      }
+      .creat{
+        margin-left: 150px;
       }
     `}</style>
     </>

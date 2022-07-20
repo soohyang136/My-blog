@@ -23,6 +23,7 @@ export default function Join(){
             .submit{
                 font-size: 20px;
                 text-align: center;
+                background-color: #13a78e;
             }
         `}</style>
         </>

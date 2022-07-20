@@ -24,6 +24,7 @@ export default function Login(){
             }
             .submit{
                 font-size: 20px;
+                background-color: #13a78e;
             }
         `}</style>
         </>
