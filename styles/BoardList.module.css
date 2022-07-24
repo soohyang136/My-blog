@@ -1,0 +1,36 @@
+.list{
+    padding-left: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.num{
+    color: black;
+    list-style-type: none;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.title{
+    color: black;
+    list-style-type: none;
+    font-weight: bold;
+    font-size: 17px;
+    padding-left: 70px;
+}
+
+.author{
+    color: black;
+    list-style-type: none;
+    font-weight: bold;
+    font-size: 17px;
+    padding-left: 700px;
+}
+
+.created_at{
+    color: black;
+    list-style-type: none;
+    font-weight: bold;
+    font-size: 17px;
+    padding-left: 50px;
+}

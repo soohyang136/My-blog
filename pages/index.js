@@ -1,18 +1,11 @@
+import axios from 'axios';
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react';
+import BoardList from '../components/BoardList';
 
 export default function Home(props) {
-  // function onreg(){
-    
-  //   if(token === null){
-  //     window.location.replace("/login");
-  //   }
-  //   else{
-  //     window.location.replace("/register");
-  //   }
-  // }
   return (
     <>
       <div className='board'>
@@ -32,6 +25,9 @@ export default function Home(props) {
           <li className='author'>글쓴이</li>
           <li className='creat'>작성일시</li>
         </ul>
+      </div>
+      <div className='mainBoard'>
+        <BoardList />
       </div>
     </div>
     <style jsx>{`
@@ -79,6 +75,15 @@ export default function Home(props) {
         display: flex;
         align-items: center;
       }
+      .title{
+        padding-left: 70px;
+      }
+      .author{
+        padding-left: 700px;
+      }
+      .creat{
+        padding-left: 150px;
+      }
       li{
         color: white;
         list-style-type: none;
@@ -89,15 +94,6 @@ export default function Home(props) {
         padding-left: 20px;
         display: flex;
         justify-content: flex-start;
-      }
-      .title{
-        margin-left: 70px;
-      }
-      .author{
-        margin-left: 700px;
-      }
-      .creat{
-        margin-left: 150px;
       }
     `}</style>
     </>

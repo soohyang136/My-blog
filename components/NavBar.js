@@ -2,6 +2,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function NavBar(props){
+    function onLogout(){
+        localStorage.removeItem('token');
+        window.location.replace("/");
+    }
     return(
         <>
         <nav>
@@ -19,8 +23,8 @@ export default function NavBar(props){
             </>
             :
             <>
-            <div className="logged">로그인됨</div>
-            <div className="logout">로그아웃</div>
+            <div className="logged">{props.user['username']}님</div>
+            <div className="logout" onClick={onLogout}>로그아웃</div>
             </>
             }
         </nav>
