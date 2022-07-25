@@ -23,7 +23,7 @@ export default function Home(props) {
           <li className='num'>번호</li>
           <li className='title'>제목</li>
           <li className='author'>글쓴이</li>
-          <li className='creat'>작성일시</li>
+          <li className='create'>작성일시</li>
         </ul>
       </div>
       <div className='mainBoard'>
@@ -75,14 +75,19 @@ export default function Home(props) {
         display: flex;
         align-items: center;
       }
+      .num{
+        width: 30px;  
+      }
       .title{
-        padding-left: 70px;
+        width: 30px;
+        margin-left: 50px;
       }
       .author{
-        padding-left: 700px;
+        width: 50px;
+        margin-left: 680px;
       }
-      .creat{
-        padding-left: 150px;
+      .create{
+        margin-left: 170px;
       }
       li{
         color: white;
