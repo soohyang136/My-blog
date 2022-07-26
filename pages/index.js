@@ -61,11 +61,12 @@ export default function Home(props) {
         border-radius: 5px;
         border: 0.5px solid gray;
         padding-left: 10px;
+        font-size: 15px;
       }
       .submit{
         width: 12%;
         background-color: #f8f9fa;
-        border: 1px solid black;
+        border: 1px solid gray;
         border-radius: 5px;
       }
       .bar{
@@ -76,15 +77,15 @@ export default function Home(props) {
         align-items: center;
       }
       .num{
-        width: 30px;  
+        width: 40px;  
       }
       .title{
-        width: 30px;
-        margin-left: 50px;
+        width: 40px;
+        margin-left: 40px;
       }
       .author{
         width: 50px;
-        margin-left: 680px;
+        margin-left: 665px;
       }
       .create{
         margin-left: 170px;

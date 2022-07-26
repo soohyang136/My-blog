@@ -34,7 +34,17 @@ function MyApp({ Component, pageProps }) {
     <>  
       <NavBar token={token} user={user} />
       <Component {...pageProps} token={token} user={user} />
-      
+      <style jsx global>{`
+        @font-face {
+          font-family: 'DalseoHealingBold';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/DalseoHealingBold.woff2') format('woff2');
+          font-weight: 700;
+          font-style: normal;
+        }
+        *{
+          font-family: 'DalseoHealingBold';
+        }
+      `}</style>
     </>
   )
 }

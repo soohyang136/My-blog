@@ -3,7 +3,7 @@ import { useState } from "react"
 
 export default function Register(props){
     const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+    const [content, setContent] = useState(``);
     async function onRegister(e){
         e.preventDefault();
         console.log(props.user);
@@ -28,6 +28,8 @@ export default function Register(props){
                 height: 40px;
                 border-radius: 5px;
                 border: 1px solid gray;
+                padding-left: 10px;
+                font-size: 15px;
             }
             .content{
                 margin-top: 20px;
@@ -35,6 +37,8 @@ export default function Register(props){
                 padding-top: 10px;
                 border-radius: 5px;
                 border: 1px solid gray;
+                padding-left: 10px;
+                font-size: 15px;
             }
             .reg{
                 margin-top: 20px;
@@ -42,7 +46,8 @@ export default function Register(props){
                 height: 40px;
                 background-color: #13a78e;
                 border-radius: 5px;
-                border: 1px solid gray;
+                border: 1px solid #13a78e;
+                font-size: 15px;
             }
 
         `}</style>

@@ -11,6 +11,7 @@
     list-style-type: none;
     font-size: 17px;
     width: 30px;
+    text-align: center;
 }
 
 .title{
@@ -18,7 +19,7 @@
     list-style-type: none;
     font-weight: bold;
     font-size: 17px;
-    width: 30px;
+    width: 400px;
     margin-left: 50px;
 }
 
@@ -27,8 +28,9 @@
     list-style-type: none;
     font-weight: bold;
     font-size: 17px;
-    margin-left: 680px;
+    margin-left: 240px;
     width: 180px;
+    text-align: center;
 }
 
 .created_at{
@@ -36,6 +38,7 @@
     list-style-type: none;
     font-weight: bold;
     font-size: 17px;
+    margin-left: 50px;
 }
 
 .move{
