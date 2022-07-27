@@ -3,15 +3,32 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "../styles/BoardList.module.css";
 
-export default function BoardList(){
-const [boardlist, setBoardlist] = useState([]);
+export default function BoardList(props){
+    const [boardlist, setBoardlist] = useState([]);
+    const [copyList, setCopyList] = useState([]);
+    useEffect(() => {
+        async function getBoard(){
+            const response = await axios.get("http://127.0.0.1:8000/board/getBoards/")
+            setBoardlist(response.data)
+            setCopyList(response.data)
+        };
+        getBoard();
+    }, []);
   useEffect(() => {
-    async function getBaord(){
-      const response = await axios.get("http://127.0.0.1:8000/board/getBoards/")
-      setBoardlist(response.data)
-    };
-    getBaord();
-  }, []);
+    console.log("find" + props.find)
+    if(props.find !== ""){
+        const findlist = [];
+        for(let i = 0; i < copyList.length; i++){
+            if(copyList[i].title.includes(props.find)){
+                findlist.push(copyList[i]);
+            }
+        }
+        setBoardlist(findlist);
+    }
+    else{
+        setBoardlist(copyList);
+    }
+  }, [props.find]);
   const list = boardlist.slice(0).reverse().map((data, index) => (
     <ul className={styles.list}>
       <li className={styles.num}>{boardlist.length - index}</li>

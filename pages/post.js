@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react";
+import CommentList from "../components/CommentList";
 
-export default function Post(){
+export default function Post(props){
     const [board, setBoard] = useState({});
+    const [an_Content, setAn_Content] = useState("");
     const router = useRouter();
     const id = router.query.id;
     console.log(id)
@@ -18,8 +20,15 @@ export default function Post(){
             console.log(board);
         }
         getBoard();
-        board.content
     }, [id]);
+
+    async function onComment(e){
+        e.preventDefault();
+        const form = {'author': props.user['id'], 'content': an_Content, 'board': id}
+        const res = await axios.post("http://127.0.0.1:8000/board/registerComment/", form);
+        setAn_Content("");
+    }
+
     return(
         <>
             <div className="board">
@@ -39,7 +48,40 @@ export default function Post(){
                     </div>
                 </div>
             </div>
+            <CommentList />
+            <form className="reg_comment" onSubmit={onComment}>
+                <label className="comment_label"><div className="label_title">댓글</div>
+                    <textarea type={'text'} value={an_Content} onChange={(e) => {setAn_Content(e.target.value)}} className="an_content" />
+                    <input type={'submit'} value="등록" className="comment_button" /> 
+                </label>
+            </form>
             <style jsx>{`
+                .reg_comment{
+                    padding: 15px 115px;
+                }
+                .an_content{
+                    margin-top: 10px;
+                    height: 100px;
+                    padding-top: 10px;
+                    padding-left: 10px;
+                }
+                .comment_button{
+                    margin-top: 10px;
+                    width: 60px;
+                    height: 30px;
+                    border-radius: 5px;
+                    background-color: #13a78e;
+                    border: 1.5px solid #13a78e;
+                }
+                .comment_label{
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 30px;
+                }
+                .label_title{
+                    border-bottom: 1px solid gray;
+                    height: 50px;
+                }                
                 .board{
                     padding: 30px 115px;
                 }
@@ -64,8 +106,8 @@ export default function Post(){
                 .sub{
                     display: flex;
                     flex-direction: column;
-                    padding-left: 1000px;
-                    padding-bottom: 20px;
+                    margin-left: 1000px;
+                    margin-top: 30px;
                 }
             `}</style>
         </>

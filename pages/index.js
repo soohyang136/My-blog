@@ -6,6 +6,12 @@ import { useEffect, useState } from 'react';
 import BoardList from '../components/BoardList';
 
 export default function Home(props) {
+  const [search, setSearch] = useState("");
+  const [find, setFind] = useState("");
+  function onFind(e){
+    e.preventDefault();
+    setFind(search);
+  }
   return (
     <>
       <div className='board'>
@@ -13,10 +19,10 @@ export default function Home(props) {
         <Link href={props.token !== null ? "/register" : "/login"}>
           <button className='reg'>질문 등록하기</button>
         </Link>
-          <div className='search-bar'>
-            <input type={'text'} className="search" />
-            <input type={'submit'} className="submit" value="검색" />
-          </div>
+          <form className='search-bar' >
+            <input type={'text'} className="search" value={search} onChange={(e) => {setSearch(e.target.value)}} />
+            <input type={'submit'} className="submit" value="검색" onClick={onFind} />
+          </form>
       </div>
       <div className='bar'>
         <ul>
@@ -27,7 +33,7 @@ export default function Home(props) {
         </ul>
       </div>
       <div className='mainBoard'>
-        <BoardList />
+        <BoardList find={find} />
       </div>
     </div>
     <style jsx>{`
