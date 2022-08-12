@@ -27,6 +27,13 @@ export default function Post(props){
         const form = {'author': props.user['id'], 'content': an_Content, 'board': id}
         const res = await axios.post("http://127.0.0.1:8000/board/registerComment/", form);
         setAn_Content("");
+        window.location.replace(`/post?id=${id}`)
+    }
+
+    async function deleteBoard(){
+        const form = {'id': board.id}
+        const deres = await axios.post("http://127.0.0.1:8000/board/deleteBoard/", form);
+        window.location.replace('/');
     }
 
     return(
@@ -39,6 +46,11 @@ export default function Post(props){
                     <div className="in_content" dangerouslySetInnerHTML={{__html:board.content}}>
                     </div>
                     <div className="sub">
+                        {props.user['username'] === board.author ?
+                        <button onClick={deleteBoard}>delete</button>
+                        :
+                        <div></div>
+                        }
                         <div className="author">
                         {board.author}
                         </div>

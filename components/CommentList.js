@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styles from "../styles/CommentList.module.css";
 
-export default function CommentList(){
+export default function CommentList(props){
     const [comments, setComments] = useState([]);
     const router = useRouter();
     const id = router.query.id;
@@ -17,7 +17,7 @@ export default function CommentList(){
             console.log(comments);
         }
         getComments();
-    }, [id]);
+    }, [id] );
     const list = comments.slice(0).reverse().map((data, index) => (
         <div className={styles.list}>
           <div className={styles.content} dangerouslySetInnerHTML={{__html:data.content}}></div>
