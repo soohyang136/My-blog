@@ -31,9 +31,12 @@ export default function Post(props){
     }
 
     async function deleteBoard(){
-        const form = {'id': board.id}
-        const deres = await axios.post("http://127.0.0.1:8000/board/deleteBoard/", form);
-        window.location.replace('/');
+        const yes = confirm("정말로 삭제하시겠습니까?");
+        if(yes){
+            const form = {'id': board.id}
+            const deres = await axios.post("http://127.0.0.1:8000/board/deleteBoard/", form);
+            window.location.replace('/');
+        }
     }
 
     return(
@@ -47,7 +50,10 @@ export default function Post(props){
                     </div>
                     <div className="sub">
                         {props.user['username'] === board.author ?
-                        <button onClick={deleteBoard}>delete</button>
+                        <div className="btn">
+                        <button onClick={deleteBoard} className="del_bt">삭제</button>
+                        <button onClick={(e)=>{router.push(`/modify_board?id=${id}`)}} className="mod_bt">수정</button>
+                        </div>
                         :
                         <div></div>
                         }
@@ -60,7 +66,7 @@ export default function Post(props){
                     </div>
                 </div>
             </div>
-            <CommentList />
+            <CommentList user={props.user} />
             <form className="reg_comment" onSubmit={onComment}>
                 <label className="comment_label"><div className="label_title">댓글</div>
                     <textarea type={'text'} value={an_Content} onChange={(e) => {setAn_Content(e.target.value)}} className="an_content" />
@@ -68,6 +74,23 @@ export default function Post(props){
                 </label>
             </form>
             <style jsx>{`
+                .btn{
+                    display: flex;
+
+                }
+                .del_bt{
+                    width: 40%;
+                    background-color: transparent;
+                    border: 1px solid gray;
+                    margin-right: 10%; 
+                    cursor: pointer; 
+                }
+                .mod_bt{
+                    width: 40%;
+                    background-color: transparent;
+                    border: 1px solid gray;
+                    cursor: pointer;
+                }
                 .reg_comment{
                     padding: 15px 115px;
                 }
