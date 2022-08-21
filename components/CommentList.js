@@ -33,10 +33,10 @@ export default function CommentList(props){
           <div className={styles.content} dangerouslySetInnerHTML={{__html:data.content}}></div>
           <div className={styles.sub}>
             {props.user['username'] === data.author ?
-            <>
-            <button onClick={(e)=>{deleteComment(data.id)}}>delete</button>
-            <button onClick={(e)=>{router.push(`/modify_comment?id=${data.id}`)}}>modify</button>
-            </>
+            <div className={styles.btn}>
+            <button className={styles.del_bt} onClick={(e)=>{deleteComment(data.id)}}>삭제</button>
+            <button className={styles.mod_bt} onClick={(e)=>{router.push(`/modify_comment?id=${data.id}`)}}>수정</button>
+            </div>
             :
             <div></div>
             }
